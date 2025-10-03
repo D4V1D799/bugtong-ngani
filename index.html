@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bugtong para sa Baitang 5</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="dark-bg">
+  <header class="topbar">
+    <h1>Bugtong para sa Baitang 5</h1>
+    <div class="controls">
+      <button id="themeToggle" class="btn btn-ghost" aria-label="Toggle theme">🌙 Dark</button>
+    </div>
+  </header>
+
+  <main class="overlay">
+    <section class="panel">
+      <div class="row">
+        <div class="field">
+          <label for="category">Kategorya (opsyonal)</label>
+          <select id="category">
+            <option value="lahat">Lahat</option>
+            <option value="Hayop">Hayop</option>
+            <option value="Bagay">Bagay</option>
+            <option value="Kalikasan">Kalikasan</option>
+            <option value="Bahay">Bahay</option>
+            <option value="Pagkain">Pagkain</option>
+            <option value="Katawan">Katawan</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="order">Ayos</label>
+          <select id="order">
+            <option value="shuffle">Shuffle</option>
+            <option value="sequence">Sunod-sunod</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>&nbsp;</label>
+          <button id="startBtn" class="btn">▶️ Simulan</button>
+        </div>
+      </div>
+
+      <div class="progress-wrap" aria-label="Progress">
+        <div id="progressBar" class="progress"></div>
+        <span id="counter" class="counter">0 / 50</span>
+      </div>
+
+      <div id="card" class="card" aria-live="polite">
+        <p id="question" class="question">Pindutin ang “Simulan”.</p>
+
+        <div class="answer-row">
+          <input id="answerInput" class="input" type="text" placeholder="Ilagay ang sagot dito…" disabled />
+          <button id="submitBtn" class="btn" disabled>Isumite</button>
+        </div>
+        <p id="feedback" class="feedback" role="status"></p>
+
+        <div class="actions">
+          <button id="hintBtn" class="btn btn-ghost" disabled>💡 Pahiwatig</button>
+          <button id="showBtn" class="btn btn-ghost" disabled>Ipakita ang Sagot</button>
+        </div>
+        <p id="answer" class="answer" hidden></p>
+
+        <div class="judge">
+          <button id="correctBtn" class="btn ok" disabled>✅ Markahan na Tama</button>
+          <button id="skipBtn" class="btn warn" disabled>⏭️ Laktawan</button>
+        </div>
+
+        <div class="nav">
+          <button id="prevBtn" class="btn btn-ghost" disabled>⬅️ Nakaraan</button>
+          <button id="nextBtn" class="btn btn-ghost" disabled>Susunod ➡️</button>
+        </div>
+      </div>
+
+      <div class="score">
+        <span>✅ Tama: <strong id="scoreOk">0</strong></span>
+        <span>🟡 Malapit: <strong id="scoreClose">0</strong></span>
+        <span>❌ Mali: <strong id="scoreWrong">0</strong></span>
+        <span>⏭️ Nilaktawan: <strong id="scoreSkip">0</strong></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Results modal -->
+  <div id="resultsModal" class="modal" hidden>
+    <div class="modal-panel">
+      <h2>📊 Resulta</h2>
+      <ul class="results-list">
+        <li>✅ Tamang sagot: <strong id="rOk">0</strong></li>
+        <li>🟡 Malapit na sagot: <strong id="rClose">0</strong></li>
+        <li>❌ Mali: <strong id="rWrong">0</strong></li>
+        <li>⏭️ Nilaktawan: <strong id="rSkip">0</strong></li>
+        <li>🎯 Accuracy: <strong id="rAcc">0%</strong></li>
+      </ul>
+      <div class="modal-actions">
+        <button id="restartBtn" class="btn">🔁 Magsimula Muli</button>
+        <button id="closeModalBtn" class="btn btn-ghost">Isara</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
