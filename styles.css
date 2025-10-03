@@ -1,0 +1,70 @@
+:root{
+  --bg:#0b0f14; --fg:#f5f7fb; --muted:#b8c0cc;
+  --brand:#3aa0ff; --ok:#19c37d; --warn:#ffb020; --bad:#ff5d5d;
+  --panel: rgba(0,0,0,0.55); --shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+body{ margin:0; font-family:system-ui, Arial, sans-serif; color:var(--fg); background:#111; min-height:100vh; }
+body.dark-bg{
+  background:
+    linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("https://upload.wikimedia.org/wikipedia/commons/7/7d/Philippine_Eagle_closeup.jpg")
+    center/cover fixed no-repeat;
+}
+body.light{
+  --bg:#ffffff; --fg:#0b1220; --muted:#536071; --panel:#f3f6fb; --brand:#0057d9;
+  background:#f7fafc;
+}
+
+.topbar{ display:flex; align-items:center; justify-content:space-between; padding:14px 18px; background:rgba(0,0,0,0.35); backdrop-filter:blur(6px); }
+.topbar h1{ font-size:1.25rem; margin:0; }
+.controls{ display:flex; gap:8px; align-items:center; }
+
+.overlay{ min-height:calc(100vh - 64px); padding:22px; }
+.panel{ max-width:900px; margin:0 auto; background:var(--panel); border-radius:16px; padding:18px; box-shadow:var(--shadow); }
+.row{ display:flex; gap:16px; flex-wrap:wrap; }
+.field{ display:flex; flex-direction:column; min-width:200px; }
+label{ font-size:.85rem; color:var(--muted); margin-bottom:6px; }
+
+select, .input{
+  padding:10px 12px; border-radius:10px; border:1px solid #233; background:#0c1218; color:#e8eef6;
+}
+body.light select, body.light .input{ background:#fff; color:#0b1220; border-color:#d8e0ea; }
+.input{ flex:1; min-width:220px; }
+.answer-row{ display:flex; gap:8px; align-items:center; }
+
+.btn{
+  background:var(--brand); color:white; border:none; cursor:pointer;
+  padding:10px 14px; border-radius:10px; font-weight:600; box-shadow:0 2px 0 rgba(0,0,0,0.2);
+}
+.btn:hover{ filter:brightness(1.05); }
+.btn:disabled{ opacity:.5; cursor:not-allowed; }
+.btn-ghost{ background:transparent; color:var(--fg); border:1px solid rgba(255,255,255,.2); }
+.ok{ background:var(--ok); } .warn{ background:var(--warn); color:#1b1300; }
+
+.progress-wrap{ position:relative; height:12px; background:rgba(255,255,255,0.12);
+  border-radius:999px; margin:14px 0 6px; }
+.progress{ height:100%; width:0%; background:linear-gradient(90deg, #3aa0ff, #7ad7ff);
+  border-radius:inherit; transition:width .25s ease; }
+.counter{ position:absolute; right:10px; top:-26px; font-size:.9rem; color:#d6deea; }
+
+.card{ margin-top:10px; background:rgba(0,0,0,0.35); padding:18px; border-radius:14px; }
+.question{ font-size:1.3rem; margin:6px 0 10px; text-shadow:0 2px 6px rgba(0,0,0,.6); }
+.answer{ font-size:1.15rem; color:#90f0c6; margin:8px 0; }
+.feedback{ margin:6px 0; font-weight:700; }
+.feedback.ok{ color:var(--ok); }
+.feedback.close{ color:#ffd36d; }
+.feedback.bad{ color:var(--bad); }
+
+.actions,.judge,.nav{ display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
+.nav{ justify-content:space-between; }
+.score{ display:flex; gap:18px; margin-top:14px; color:#d6deea; }
+
+/* Modal */
+.modal{ position:fixed; inset:0; background:rgba(0,0,0,.6); display:grid; place-items:center; z-index:10; }
+/* Fix: respect hidden */
+.modal[hidden]{ display:none !important; }
+
+.modal-panel{ background:var(--panel); border-radius:16px; padding:20px; width:min(520px, 92%); box-shadow:var(--shadow); }
+.results-list{ list-style:none; padding:0; margin:10px 0 16px; }
+.results-list li{ margin:6px 0; }
+.modal-actions{ display:flex; gap:10px; justify-content:flex-end; }
